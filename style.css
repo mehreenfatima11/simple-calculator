@@ -1,0 +1,131 @@
+:root {
+  --sky: #dcebf7;
+  --lilac: #e9e1f7;
+  --panel: #fbf8ff;
+  --key: #f1ecfa;
+  --key-hover: #e3d6f4;
+  --pink: #ffc9d9;
+  --pink-dim: #f5a8bf;
+  --mint: #bfeadd;
+  --mint-dim: #9adfc9;
+  --ink: #4a3b63;
+  --muted: #a394b8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, var(--sky), var(--lilac));
+  font-family: "Space Mono", "Courier New", monospace;
+  padding: 24px;
+}
+
+.calculator {
+  width: 320px;
+  max-width: 100%;
+  background: var(--panel);
+  border-radius: 28px;
+  padding: 20px;
+  box-shadow: 0 20px 45px rgba(122, 98, 163, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.calculator__display {
+  padding: 22px 14px 16px;
+  text-align: right;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.calculator__history {
+  color: var(--muted);
+  font-size: 0.95rem;
+  min-height: 1.2em;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.calculator__value {
+  color: var(--ink);
+  font-size: 2.6rem;
+  line-height: 1.1;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.calculator__keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.key {
+  border: none;
+  border-radius: 16px;
+  background: var(--key);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 1.15rem;
+  padding: 18px 0;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.05s ease;
+}
+
+.key:hover {
+  background: var(--key-hover);
+}
+
+.key:active {
+  transform: scale(0.96);
+}
+
+.key--fn {
+  color: #8a6bab;
+  background: #eee5fb;
+}
+
+.key--fn:hover {
+  background: #e2d0f7;
+}
+
+.key--op {
+  background: var(--pink);
+  color: var(--ink);
+}
+
+.key--op:hover {
+  background: var(--pink-dim);
+}
+
+.key--equals {
+  background: var(--mint);
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.key--equals:hover {
+  background: var(--mint-dim);
+}
+
+.key--wide {
+  grid-column: span 2;
+  text-align: left;
+  padding-left: 26px;
+}
+
+@media (max-width: 360px) {
+  .calculator__value {
+    font-size: 2.1rem;
+  }
+}
