@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push: hello
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Verify required files exist
+        run: |
+          test -f index.html
+          test -f style.css
+          test -f script.js
+          echo "All required files found."
+
+      - name: Validate HTML syntax
+        uses: Cyb3r-Jak3/html5validator-action@v7.2.0
+        with:
+          root: .
